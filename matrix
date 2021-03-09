@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+void printMatrix(int m[][3]);
+void multMatrix(int m[][3],int n[][3]);
+
+int main(void) {
+  int a[3][3]={{1,1,1},{1,1,1},{1,1,1}};
+  int b[3][3]={{2,2,2},{2,2,2},{2,2,2}};
+
+  multMatrix(a,b);
+
+  return 0;
+}
+
+void printMatrix(int m[][3])
+{
+    int i,j;
+    for (i=0;i<3;i++)
+    {
+        for (j=0;j<3;j++)
+            printf("%3d",m[i][j]);
+        printf("\n");
+    }
+}
+void multMatrix(int m[][3],int n[][3])
+{
+    int c,d,e,total=0;
+    int mul[3][3];
+    for (c=0;c<3;c++)
+    {
+        for (d=0;d<3;d++)
+        {
+            for (e=0;e<3;e++)
+            {
+                total=total+m[c][e]*n[e][d];
+            }
+            mul[c][d]=total;
+            total=0;
+        }
+    }
+    printMatrix(mul);
+}
